@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UWU CALC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="logo-wrapper">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="UWU Logo" class="header-logo">
+            <h1 class="gradient-title">UWU CALC</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Вывод ошибок вместо alert() -->
+        {% if error %}
+            <div class="uwu-error-msg" style="color: #ff6b6b; text-align: center; font-weight: bold; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255,107,107,0.5);">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="POST" action="/" class="operations-form">
+            
+            <!-- Сетка операций: кнопки отправляют форму и подсвечиваются через Flask -->
+            <div class="operations-grid">
+                <button type="submit" name="op" value="+" class="op-btn plus {% if op == '+' %}active{% endif %}"></button>
+                <button type="submit" name="op" value="-" class="op-btn minus {% if op == '-' %}active{% endif %}"></button>
+                <button type="submit" name="op" value="x" class="op-btn mult {% if op == 'x' %}active{% endif %}"></button>
+                <button type="submit" name="op" value="/" class="op-btn div {% if op == '/' %}active{% endif %}"></button>
+            </div>
+
+            <!-- Рабочая область -->
+            <div class="workspace">
+                <div class="fraction">
+                    <input type="number" name="n1" value="{{ n1 }}">
+                    <input type="number" name="d1" value="{{ d1 }}">
+                </div>
+
+                <div class="op-display" id="current-op-text">{{ op }}</div>
+
+                <div class="fraction">
+                    <input type="number" name="n2" value="{{ n2 }}">
+                    <input type="number" name="d2" value="{{ d2 }}">
+                </div>
+
+                <button type="submit" class="equal-btn">=</button>
+
+                <div class="fraction">
+                    <input type="number" value="{{ res_n }}" readonly>
+                    <input type="number" value="{{ res_d }}" readonly>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <footer>
+        <p>UWU позитивчик</p>
+    </footer>
+
+</body>
+</html>

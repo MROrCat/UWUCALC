@@ -1,0 +1,208 @@
+body {
+    background-color: #2e004f;
+    color: #00ffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    min-height: 100vh; 
+}
+
+
+h1 {
+    border: 2px solid #00ffff;
+    padding: 10px 60px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    padding: 40px 0;
+    flex: 1; 
+}
+
+footer {
+    width: 100%; 
+    background-color: rgba(0, 0, 0, 0.3); 
+    border-top: 2px solid #00ffff; 
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 28px; 
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg,  #00ffff, #a020f0, #ff00ff);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+}
+
+
+.operations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.op-btn {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    border: 3px solid #00ffff;
+    border-radius: 15px;
+    background-repeat: no-repeat; 
+    background-position: center;  
+    background-size: 90%;     
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 0;
+    display: block;
+}
+
+.op-btn.active {
+    border-color: #ffffff; 
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.plus  { background-image: url('flat.png'); }
+.minus { background-image: url('iscor.png'); }
+.mult  { background-image: url('rainbow.png'); }
+.div   { background-image: url('pinki.png'); }
+
+.plus.active  { background-image: url('flatR.png'); }
+.minus.active { background-image: url('iscorR.png'); }
+.mult.active  { background-image: url('rainbowR.png'); }
+.div.active   { background-image: url('pinkiR.png'); }
+
+.workspace {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.fraction {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input {
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: 3px solid #00ffff;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    outline: none;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.op-display {
+    font-size: 40px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+}
+
+.equal-btn {
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 3px solid #00ffff;
+    border-radius: 10px;
+    color: #00ffff;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.equal-btn:hover {
+    background-color: #00ffff;
+    color: #2e004f;
+}
+
+
+.logo-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+    border: 2px solid #00ffff;
+    padding: 10px 40px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+
+.header-logo {
+    height: 80px; 
+    width: auto;
+    filter: drop-shadow(0 0 5px #00ffff);
+}
+
+
+.gradient-title {
+    margin: 0;
+    font-size: 42px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #00ffff, #a020f0, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 3px;
+    border: none; 
+    padding: 0;
+}
+
+/* Делаем так, чтобы форма передавала свойства flex/grid от контейнера к элементам */
+.operations-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Оживляем переключение картинок без JS при клике на радио-кнопки */
+.operations-grid input[type="radio"]:checked + .op-btn {
+    border: 3px solid #00ffff; /* Голубое свечение для выбранной пони */
+    box-shadow: 0 0 15px #00ffff;
+    transform: scale(1.05);
+}
+
+/* Сбрасываем дефолтные стили кнопок-операций, чтобы они оставались просто вашими картинками */
+.operations-grid .op-btn {
+    background-color: transparent;
+    border: 2px solid transparent;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Эффект при наведении мышки на пони */
+.operations-grid .op-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Красивое неоновое свечение для активной пони, переданной из Python */
+.operations-grid .op-btn.active {
+    border: 3px solid #00ffff !important;
+    box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff;
+    transform: scale(1.05);
+}
