@@ -17,7 +17,6 @@
 
     <div class="container">
         
-        <!-- Вывод ошибок вместо alert() -->
         {% if error %}
             <div class="uwu-error-msg" style="color: #ff6b6b; text-align: center; font-weight: bold; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255,107,107,0.5);">
                 {{ error }}
@@ -26,7 +25,6 @@
 
         <form method="POST" action="/" class="operations-form">
             
-            <!-- Сетка операций: кнопки отправляют форму и подсвечиваются через Flask -->
             <div class="operations-grid">
                 <button type="submit" name="op" value="+" class="op-btn plus {% if op == '+' %}active{% endif %}"></button>
                 <button type="submit" name="op" value="-" class="op-btn minus {% if op == '-' %}active{% endif %}"></button>
@@ -34,7 +32,6 @@
                 <button type="submit" name="op" value="/" class="op-btn div {% if op == '/' %}active{% endif %}"></button>
             </div>
 
-            <!-- Рабочая область -->
             <div class="workspace">
                 <div class="fraction">
                     <input type="number" name="n1" value="{{ n1 }}">
