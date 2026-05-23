@@ -171,7 +171,6 @@ input::-webkit-inner-spin-button {
     padding: 0;
 }
 
-/* Делаем так, чтобы форма передавала свойства flex/grid от контейнера к элементам */
 .operations-form {
     display: flex;
     flex-direction: column;
@@ -179,14 +178,12 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 
-/* Оживляем переключение картинок без JS при клике на радио-кнопки */
 .operations-grid input[type="radio"]:checked + .op-btn {
-    border: 3px solid #00ffff; /* Голубое свечение для выбранной пони */
+    border: 3px solid #00ffff;
     box-shadow: 0 0 15px #00ffff;
     transform: scale(1.05);
 }
 
-/* Сбрасываем дефолтные стили кнопок-операций, чтобы они оставались просто вашими картинками */
 .operations-grid .op-btn {
     background-color: transparent;
     border: 2px solid transparent;
@@ -195,12 +192,10 @@ input::-webkit-inner-spin-button {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Эффект при наведении мышки на пони */
 .operations-grid .op-btn:hover {
     transform: scale(1.05);
 }
 
-/* Красивое неоновое свечение для активной пони, переданной из Python */
 .operations-grid .op-btn.active {
     border: 3px solid #00ffff !important;
     box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff;
