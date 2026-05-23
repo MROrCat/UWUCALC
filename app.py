@@ -6,15 +6,12 @@ app = Flask(__name__)
 
 def calculate_fractions(n1, d1, n2, d2, op):
     """Выполняет вычисления и возвращает (res_n, res_d, error_message)"""
-    # Проверка на заполненность полей
     if None in (n1, d1, n2, d2):
         return None, None, "Заполни все квадратики!"
 
-    # Проверка деления на ноль в исходных данных
     if d1 == 0 or d2 == 0:
         return None, None, "В знаменателе не может быть 0!"
 
-    # Вычисление в зависимости от операции
     if op == "+":
         res_n = n1 * d2 + n2 * d1
         res_d = d1 * d2
@@ -30,15 +27,11 @@ def calculate_fractions(n1, d1, n2, d2, op):
     else:
         return None, None, "Неверная операция!"
 
-    # Проверка деления на ноль в результате
     if res_d == 0:
         return None, None, "Ошибка: деление на ноль!"
 
-    # Сокращение дроби (НОД)
     common = math.gcd(res_n, res_d)
 
-    # В Python math.gcd возвращает всегда положительное число.
-    # Если знаменатель получился отрицательным, переносим минус наверх.
     final_n = int(res_n / common)
     final_d = int(res_d / common)
     if final_d < 0:
@@ -50,7 +43,6 @@ def calculate_fractions(n1, d1, n2, d2, op):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # Значения по умолчанию для первой загрузки страницы
     context = {
         "n1": "",
         "d1": "",
@@ -63,7 +55,6 @@ def index():
     }
 
     if request.method == "POST":
-        # Получаем данные из HTML-формы
         try:
             n1 = (
                 int(request.form.get("n1")) if request.form.get("n1") else None
@@ -83,10 +74,8 @@ def index():
 
         op = request.form.get("op", "+")
 
-        # Сохраняем введенные пользователем данные, чтобы они не стирались
         context.update({"n1": n1, "d1": d1, "n2": n2, "d2": d2, "op": op})
 
-        # Считаем
         res_n, res_d, error = calculate_fractions(n1, d1, n2, d2, op)
 
         if error:
